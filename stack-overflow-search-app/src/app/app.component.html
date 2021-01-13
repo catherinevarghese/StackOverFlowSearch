@@ -1,12 +1,13 @@
-<nz-layout class="layout">
+<!-- <nz-layout class="layout">
   <nz-header>
-    <div class="logo"></div>
-   
   </nz-header>
   <nz-content>
     <ul>
       <li>
-        <a routerLink="listItems/list">List</a>
+        <a routerLink="/list-page">List</a>
+      </li>
+      <li>
+        <a routerLink="/details">Details</a>
       </li>
     </ul>
     <div class="inner-content">
@@ -14,4 +15,46 @@
     </div>
   </nz-content>
   <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+</nz-layout> -->
+
+<nz-layout class="layout">
+  <nz-sider>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <i nz-icon nzType="file"></i>
+        <span >
+          <a [routerLink]="'/list-page'">List Page</a>
+        </span>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="shop"></i>
+        <span >
+          <a [routerLink]="'/details'">
+            Detail page
+          </a>
+        </span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="right-layout">
+    <nz-header></nz-header>
+    <nz-content>
+      <div class="inner-content">
+
+      <router-outlet></router-outlet>
+        ...
+        <br />
+        Really
+        <br />...<br />...<br />...<br />
+        long
+        <br />...<br />...<br />...<br />...<br />...<br />... <br />...<br />...<br />...<br />...<br />...<br />...
+        <br />...<br />...<br />...<br />...<br />...<br />... <br />...<br />...<br />...<br />...<br />...<br />...
+        <br />...<br />...<br />...<br />...<br />...<br />... <br />...<br />...<br />...<br />...<br />...<br />...
+        <br />...<br />...<br />...<br />...<br />...<br />
+        content
+      </div>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+  </nz-layout>
 </nz-layout>
