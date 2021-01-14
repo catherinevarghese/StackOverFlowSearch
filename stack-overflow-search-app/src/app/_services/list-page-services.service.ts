@@ -11,8 +11,8 @@ export class ListPageServicesService {
   constructor(private http: HttpClient) { }
 
   // tslint:disable-next-line:typedef
-  getAllSearchList(){
-    return this.http.get<any>(`${environment.BASEURL}`)
+  getAllSearchList(page: number, pageSize: number, sort: string ){
+    return this.http.get<any>(`${environment.BASEURL}?site=stackoverflow&page=${page}&pagesize=${pageSize}&sort=${sort}`)
     .pipe(map(x => {
       console.log(x);
         return x;

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASEURL: 'https://api.stackexchange.com/2.2/search/advanced?site=stackoverflow',
+  BASEURL: 'https://api.stackexchange.com/2.2/search/advanced',
 };
 
 /*
