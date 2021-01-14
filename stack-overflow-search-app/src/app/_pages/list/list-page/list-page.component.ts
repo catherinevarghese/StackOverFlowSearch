@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ListPageServicesService } from '../../../app/_services/list-page-services.service';
-import { List } from '../../_models/list';
-import { ItemData } from '../../_models/items';
-import { SearchItems } from '../../_models/list';
+import { ListPageServicesService } from '../../../_services/list-page-services.service';
+import { List } from '../../../_models/list';
+import { ItemData } from '../../../_models/items';
+import { SearchItems } from '../../../_models/list';
 import {
   FormBuilder,
   FormGroup,
@@ -55,20 +55,20 @@ export class ListPageComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getSearchList(searchValues: SearchItems) {
-    // this.listPageServices
-    //   .getAllSearchList(searchValues)
-    //   .subscribe((allList: List) => {
-    //     this.lists = allList.items.map((data, index) => {
-    //       return {
-    //         title: data.title,
-    //         avatar: data.owner.profile_image,
-    //         answered: data.is_answered,
-    //         answer_count: data.answer_count,
-    //       };
-    //     });
-    //     console.log('the list of stackoverflow items', allList);
-    //     return this.lists;
-    //   });
+    this.listPageServices
+      .getAllSearchList(searchValues)
+      .subscribe((allList: List) => {
+        this.lists = allList.items.map((data, index) => {
+          return {
+            title: data.title,
+            avatar: data.owner.profile_image,
+            answered: data.is_answered,
+            answer_count: data.answer_count,
+          };
+        });
+        console.log('the list of stackoverflow items', allList);
+        return this.lists;
+      });
   }
   // tslint:disable-next-line:typedef
   pageIndexChanged(pageNumber: number) {
