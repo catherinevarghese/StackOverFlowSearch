@@ -15,3 +15,12 @@
       </ul>
     </nz-list-item>
   </nz-list>
+
+  <form [formGroup]="form"  (ngSubmit)="advanceSearch(form.value)">
+    <p>
+  <app-advance-search-form [form]="form"></app-advance-search-form>
+    </p>
+    <p>
+      <input type="submit">
+    </p>
+  </form>

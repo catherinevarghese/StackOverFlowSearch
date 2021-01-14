@@ -1,0 +1,58 @@
+<!-- <div nz-form[formGroup]="form">
+    <input formControlName="streetNumber"><br>
+    <input formControlName="streetType"><br>
+    <input formControlName="city"><br>
+    <input formControlName="state"><br>
+    <input formControlName="postalCode">
+  </div> -->
+
+  <form nz-form [formGroup]="form" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="4">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-form-label  nzRequired>Page</nz-form-label>
+            <input nz-input formControlName="page" style="  width: auto !important;"/> 
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="4">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-form-label nzRequired>Page Size</nz-form-label>
+            <input nz-input formControlName="pageSize" style="  width: auto !important;"/> 
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="4">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-form-label  nzRequired>From Date</nz-form-label>
+            <nz-date-picker formControlName="fromDate"></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="4">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-form-label  nzRequired>To Date</nz-form-label>
+            <nz-date-picker formControlName="toDate"></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="4">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-form-label  nzRequired>To Date</nz-form-label>
+            <nz-select  formControlName="order" >
+              <nz-option nzValue=" " nzLabel=" "></nz-option>
+              <nz-option nzValue="desc" nzLabel="desc"></nz-option>
+              <nz-option nzValue="asc" nzLabel="asc" ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+   </form>
+
+  
