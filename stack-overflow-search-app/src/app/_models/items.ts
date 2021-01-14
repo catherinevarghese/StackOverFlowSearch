@@ -1,5 +1,4 @@
 export interface ItemData {
-
     title: string;
     avatar: string;
     answered: boolean;

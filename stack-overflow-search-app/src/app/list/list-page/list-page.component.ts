@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ListPageServicesService } from '../../../app/_services/list-page-services.service';
 import { List } from '../../_models/list';
 import { ItemData } from '../../_models/items';
+import { SearchItems } from '../../_models/list';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
-  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -16,11 +15,9 @@ import {
 })
 export class ListPageComponent implements OnInit {
   lists: ItemData[] = [];
-  form: FormGroup;
+  form!: FormGroup;
   current = 1;
   isSearch = false;
-  totalItems: number;
-  newSearchvalues: any;
   constructor(
     public listPageServices: ListPageServicesService,
     private formBuilder: FormBuilder
@@ -29,50 +26,53 @@ export class ListPageComponent implements OnInit {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.form = this.formBuilder.group({
-      page: ['1', ],
-      fromDate: ['', ],
-      toDate: ['', ],
-      order: ['', ],
-      sort: ['', ],
-      q: ['', ],
-      answers: ['', ],
-      closed: ['', ],
-      title: ['', ],
-      user: ['', ],
-      url: ['', ],
-      views: ['', ],
-      wiki: ['', ],
+      page: [''],
+      order: [''],
+      sort: [''],
+      q: [''],
+      answers: [''],
+      closed: [''],
+      title: [''],
+      user: [''],
+      url: [''],
+      views: [''],
+      wiki: [''],
+      migrated: ['']
     });
     this.getSearchList(this.form.value);
   }
-
+  // tslint:disable-next-line:typedef
   advanceSearch(value: any) {
     console.log(value);
     this.isSearch = !this.isSearch;
+    this.form.value.page = 1;
     this.getSearchList(value);
+    this.form.reset();
   }
+  // tslint:disable-next-line:typedef
   search() {
     this.isSearch = !this.isSearch;
   }
-  getSearchList(searchValues){
-  this.listPageServices.getAllSearchList(searchValues).subscribe((allList: List) => {
-        this.lists = allList.items.map((data, index) => {
-          return {
-            title: data.title,
-            avatar: data.owner.profile_image,
-            answered: data.is_answered,
-            answer_count: data.answer_count,
-          };
-        });
-        this.totalItems = allList.items.length;
-        return this.lists;
-      });
+  // tslint:disable-next-line:typedef
+  getSearchList(searchValues: SearchItems) {
+    // this.listPageServices
+    //   .getAllSearchList(searchValues)
+    //   .subscribe((allList: List) => {
+    //     this.lists = allList.items.map((data, index) => {
+    //       return {
+    //         title: data.title,
+    //         avatar: data.owner.profile_image,
+    //         answered: data.is_answered,
+    //         answer_count: data.answer_count,
+    //       };
+    //     });
+    //     console.log('the list of stackoverflow items', allList);
+    //     return this.lists;
+    //   });
   }
-  pageIndexChanged(pageNumber:number){
-    console.log(pageNumber);
-    console.log(this.form.value);
-    this.form.value['page'] = pageNumber
-    console.log(this.form.value);
-    this.getSearchList(this.form.value);
+  // tslint:disable-next-line:typedef
+  pageIndexChanged(pageNumber: number) {
+    this.form.value.page = pageNumber;
+    this.getSearchList(this.form.value); 
   }
 }

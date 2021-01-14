@@ -1,145 +1,151 @@
-
-
-  <form nz-form [formGroup]="form" class="ant-advanced-search-form" >
-    <div nz-row [nzGutter]="24">
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Page</nz-form-label>
-            <input nz-input formControlName="page" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >From Date</nz-form-label>
-            <nz-date-picker formControlName="fromDate"></nz-date-picker>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label  >To Date</nz-form-label>
-            <nz-date-picker formControlName="toDate"></nz-date-picker>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label  >Order</nz-form-label>
-            <nz-select  formControlName="order" >
-              <nz-option nzValue=" " nzLabel=" "></nz-option>
-              <nz-option nzValue="desc" nzLabel="desc"></nz-option>
-              <nz-option nzValue="asc" nzLabel="asc" ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label  >Sort</nz-form-label>
-            <nz-select  formControlName="sort" >
-              <nz-option nzValue=" " nzLabel="activity"></nz-option>
-              <nz-option nzValue="desc" nzLabel="activity"></nz-option>
-              <nz-option nzValue="votes" nzLabel="votes" ></nz-option>
-              <nz-option nzValue="creation" nzLabel="creation" ></nz-option>
-              <nz-option nzValue="relevance" nzLabel="relevance" ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
+<form nz-form [formGroup]="form" class="ant-advanced-search-form">
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Migrated</nz-form-label>
+          <nz-select formControlName="migrated">
+            <nz-option nzValue=" " nzLabel=" "></nz-option>
+            <nz-option nzValue="true" nzLabel="true"></nz-option>
+            <nz-option nzValue="false" nzLabel="false"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
     </div>
-
-    <div nz-row [nzGutter]="24">
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >q</nz-form-label>
-            <input nz-input formControlName="q" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Answers</nz-form-label>
-            <input nz-input formControlName="answers" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Closed</nz-form-label>
-            <nz-select  formControlName="closed" >
-              <nz-option nzValue=" " nzLabel=" "></nz-option>
-              <nz-option nzValue="true" nzLabel="true" ></nz-option>
-              <nz-option nzValue="false" nzLabel="false" ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Answers</nz-form-label>
-            <input nz-input formControlName="answers" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Title</nz-form-label>
-            <input nz-input formControlName="title" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="4">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Users</nz-form-label>
-            <input nz-input formControlName="user" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Order</nz-form-label>
+          <nz-select formControlName="order">
+            <nz-option nzValue=" " nzLabel=" "></nz-option>
+            <nz-option nzValue="desc" nzLabel="desc"></nz-option>
+            <nz-option nzValue="asc" nzLabel="asc"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
     </div>
-
-    <div nz-row [nzGutter]="24">
-      <div nz-col [nzSpan]="8">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >Views</nz-form-label>
-            <input nz-input formControlName="views" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="8">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label >URL</nz-form-label>
-            <input nz-input formControlName="url" style="  width: auto !important;"/> 
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col [nzSpan]="8">
-        <nz-form-item>
-          <nz-form-control>
-            <nz-form-label  >Wiki</nz-form-label>
-            <nz-select  formControlName="wiki" style="  width: 200px !important;" >
-              <nz-option nzValue=" " nzLabel=" "></nz-option>
-              <nz-option nzValue="true" nzLabel="true" ></nz-option>
-              <nz-option nzValue="false" nzLabel="false" ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Sort</nz-form-label>
+          <nz-select formControlName="sort">
+            <nz-option nzValue="activity" nzLabel="activity"></nz-option>
+            <nz-option nzValue="votes" nzLabel="votes"></nz-option>
+            <nz-option nzValue="creation" nzLabel="creation"></nz-option>
+            <nz-option nzValue="relevance" nzLabel="relevance"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
     </div>
+  </div>
 
-   </form>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="4">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>q</nz-form-label>
+          <input nz-input formControlName="q" style="width: auto !important" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="4">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Answers</nz-form-label>
+          <input
+            nz-input
+            formControlName="answers"
+            style="width: auto !important"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="4">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Closed</nz-form-label>
+          <nz-select formControlName="closed">
+            <nz-option nzValue=" " nzLabel=" "></nz-option>
+            <nz-option nzValue="true" nzLabel="true"></nz-option>
+            <nz-option nzValue="false" nzLabel="false"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="4">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Answers</nz-form-label>
+          <input
+            nz-input
+            formControlName="answers"
+            style="width: auto !important"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="4">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Title</nz-form-label>
+          <input
+            nz-input
+            formControlName="title"
+            style="width: auto !important"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="4">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Users</nz-form-label>
+          <input
+            nz-input
+            formControlName="user"
+            style="width: auto !important"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
 
-  
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Views</nz-form-label>
+          <input
+            nz-input
+            formControlName="views"
+            style="width: auto !important"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>URL</nz-form-label>
+          <input
+            nz-input
+            formControlName="url"
+            style="width: auto !important"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-form-label>Wiki</nz-form-label>
+          <nz-select formControlName="wiki" style="width: 200px !important">
+            <nz-option nzValue=" " nzLabel=" "></nz-option>
+            <nz-option nzValue="true" nzLabel="true"></nz-option>
+            <nz-option nzValue="false" nzLabel="false"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>

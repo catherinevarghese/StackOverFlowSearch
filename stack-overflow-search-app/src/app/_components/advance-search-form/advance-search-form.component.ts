@@ -7,8 +7,8 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./advance-search-form.component.scss'],
 })
 export class AdvanceSearchFormComponent implements OnInit {
-  @Input() form: FormGroup;
-  @Input() isSearch: boolean;
+  @Input() form!: FormGroup;
+
   constructor() {}
 
   ngOnInit(): void {}
