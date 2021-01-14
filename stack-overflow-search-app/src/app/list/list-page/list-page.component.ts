@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ListPageServicesService} from '../../../app/_services/list-page-services.service';
+import {List} from '../../_models/list';
 
 @Component({
   selector: 'app-list-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public listPageServices: ListPageServicesService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.listPageServices.getAllSearchList().subscribe((allList: List) => {
+      console.log(allList);
+    });
   }
 
 }
