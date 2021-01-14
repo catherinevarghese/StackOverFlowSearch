@@ -17,7 +17,10 @@ import {
 export class ListPageComponent implements OnInit {
   lists: ItemData[] = [];
   form: FormGroup;
+  current = 1;
   isSearch = false;
+  totalItems: number;
+  newSearchvalues: any;
   constructor(
     public listPageServices: ListPageServicesService,
     private formBuilder: FormBuilder
@@ -26,8 +29,7 @@ export class ListPageComponent implements OnInit {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.form = this.formBuilder.group({
-      page: ['', ],
-      pageSize: ['', ],
+      page: ['1', ],
       fromDate: ['', ],
       toDate: ['', ],
       order: ['', ],
@@ -41,13 +43,13 @@ export class ListPageComponent implements OnInit {
       views: ['', ],
       wiki: ['', ],
     });
-  this.getSearchList(this.form.value)
+    this.getSearchList(this.form.value);
   }
 
   advanceSearch(value: any) {
     console.log(value);
     this.isSearch = !this.isSearch;
-    this.getSearchList(value)
+    this.getSearchList(value);
   }
   search() {
     this.isSearch = !this.isSearch;
@@ -59,10 +61,18 @@ export class ListPageComponent implements OnInit {
             title: data.title,
             avatar: data.owner.profile_image,
             answered: data.is_answered,
-            answer_count: data.answer_count
+            answer_count: data.answer_count,
           };
         });
+        this.totalItems = allList.items.length;
         return this.lists;
       });
+  }
+  pageIndexChanged(pageNumber:number){
+    console.log(pageNumber);
+    console.log(this.form.value);
+    this.form.value['page'] = pageNumber
+    console.log(this.form.value);
+    this.getSearchList(this.form.value);
   }
 }
