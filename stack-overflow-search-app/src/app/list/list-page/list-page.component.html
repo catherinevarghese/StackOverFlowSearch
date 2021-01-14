@@ -15,10 +15,10 @@
       </ul>
     </nz-list-item>
   </nz-list>
-
-  <form [formGroup]="form"  (ngSubmit)="advanceSearch(form.value)">
+  <button nz-button nzType="primary" (click)="search()" *ngIf="!isSearch"><i nz-icon nzType="search"></i>Advance Search</button>
+  <form [formGroup]="form" *ngIf="isSearch" (ngSubmit)="advanceSearch(form.value)">
     <p>
-  <app-advance-search-form [form]="form"></app-advance-search-form>
+  <app-advance-search-form [form]="form" [isSearch]="isSearch"></app-advance-search-form>
     </p>
     <p>
       <input type="submit">
