@@ -11,10 +11,12 @@ export class ListPageServicesService {
   constructor(private http: HttpClient) { }
 
   // tslint:disable-next-line:typedef
-  getAllSearchList(page: number, pageSize: number, sort: string ){
-    return this.http.get<any>(`${environment.BASEURL}?site=stackoverflow&page=${page}&pagesize=${pageSize}&sort=${sort}`)
+  getAllSearchList(formValues: any){
+    return this.http.get<any>(`${environment.BASEURL}?site=stackoverflow&page=${formValues.page}&pagesize=30&sort=${formValues.sort}
+    &order=${formValues.order}&q=${formValues.q}&answers=${formValues.answers}
+    &closed=${formValues.closed}&title=${formValues.title}&user=${formValues.user}&url=${formValues.url}&views=${formValues.views}
+    &wiki=${formValues.wiki}`)
     .pipe(map(x => {
-      console.log(x);
         return x;
     }));
 }
