@@ -3,10 +3,8 @@ import { ListPageServicesService } from '../../../_services/list-page-services.s
 import { List } from '../../../_models/list';
 import { ItemData } from '../../../_models/items';
 import { SearchItems } from '../../../_models/list';
-import {
-  FormBuilder,
-  FormGroup,
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-page',
@@ -18,9 +16,12 @@ export class ListPageComponent implements OnInit {
   form!: FormGroup;
   current = 1;
   isSearch = false;
+  selectedItem: ItemData | undefined;
+  isLoading = true;
   constructor(
     public listPageServices: ListPageServicesService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {}
 
   // tslint:disable-next-line:typedef
@@ -37,8 +38,9 @@ export class ListPageComponent implements OnInit {
       url: [''],
       views: [''],
       wiki: [''],
-      migrated: ['']
+      migrated: [''],
     });
+
     this.getSearchList(this.form.value);
   }
   // tslint:disable-next-line:typedef
@@ -64,15 +66,28 @@ export class ListPageComponent implements OnInit {
             avatar: data.owner.profile_image,
             answered: data.is_answered,
             answer_count: data.answer_count,
+            user_id: data.owner.user_id,
+            question_id: data.question_id,
+            link: data.link,
+            display_name: data.owner.display_name,
+            tags: data.tags,
+            view_count: data.view_count,
+            content_license: data.content_license,
           };
         });
-        console.log('the list of stackoverflow items', allList);
+        this.isLoading = !this.isLoading;
         return this.lists;
       });
   }
   // tslint:disable-next-line:typedef
+  navigateToDetailPage(id: number) {
+    this.selectedItem = this.lists.find((item) => item.question_id === id);
+    localStorage.setItem('selectedItem', JSON.stringify(this.selectedItem));
+    this.router.navigateByUrl('details/' + id);
+  }
+  // tslint:disable-next-line:typedef
   pageIndexChanged(pageNumber: number) {
     this.form.value.page = pageNumber;
-    this.getSearchList(this.form.value); 
+    this.getSearchList(this.form.value);
   }
 }

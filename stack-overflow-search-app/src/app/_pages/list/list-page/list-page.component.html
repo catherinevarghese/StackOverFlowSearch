@@ -4,25 +4,30 @@
   (ngSubmit)="advanceSearch(form.value)"
 >
   <p>
-    <app-advance-search-form
-      [form]="form"
-    ></app-advance-search-form>
+    <app-advance-search-form [form]="form"></app-advance-search-form>
   </p>
   <p>
     <input type="submit" />
   </p>
 </form>
 
-<button nz-button nzType="primary" (click)="search()" class="button" *ngIf="!isSearch">
+<button
+  nz-button
+  nzType="primary"
+  (click)="search()"
+  class="button"
+  *ngIf="!isSearch"
+>
   <i nz-icon nzType="search"></i>Advance Search
 </button>
-<nz-list nzItemLayout="vertical" [nzPagination]="pagination" *ngIf="!isSearch">
+<nz-spin [nzSpinning]="isLoading" nzSimple></nz-spin>
+<nz-list nzItemLayout="vertical" [nzPagination]="pagination" *ngIf="!isSearch && !isLoading">
   <nz-list-item *ngFor="let item of lists">
     <nz-list-item-meta>
       <nz-list-item-meta-avatar [nzSrc]="item.avatar">
       </nz-list-item-meta-avatar>
       <nz-list-item-meta-title>
-        <a href="{{ item.href }}">{{ item.title }}</a>
+        <a (click)="navigateToDetailPage(item.question_id)">{{ item.title }}</a>
       </nz-list-item-meta-title>
       <nz-list-item-meta-description> </nz-list-item-meta-description>
     </nz-list-item-meta>
@@ -31,8 +36,8 @@
         <nz-tag [nzColor]="'Green'">Answered</nz-tag></nz-list-item-action
       >
       <nz-list-item-action *ngIf="!item.answered">
-        <nz-tag [nzColor]="'Red'">Not Answered</nz-tag></nz-list-item-action
-      >
+        <nz-tag [nzColor]="'Red'">Not Answered</nz-tag>
+      </nz-list-item-action>
       <nz-list-item-action>
         <i style="color: black"
           >Number of answers: {{ item.answer_count }}</i
@@ -49,4 +54,3 @@
     #pagination
   ></nz-pagination>
 </nz-list>
-

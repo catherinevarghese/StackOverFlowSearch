@@ -1,1 +1,43 @@
-<p>detail-page works!</p>
+<nz-card style="width: 100%" nzHoverable>
+  <nz-card-meta
+    style="font-size: larger"
+    [nzTitle]="titleTemplate"
+    [nzDescription]="descriptionTemplate"
+    [nzAvatar]="avatarTemplate"
+  >
+  </nz-card-meta>
+</nz-card>
+<ng-template #titleTemplate>
+  <h1>{{ selectedItemDetails.title }}</h1>
+</ng-template>
+<ng-template #avatarTemplate>
+  <img nz-image width="200px" height="200px" [nzSrc]="selectedItemDetails.avatar" />
+</ng-template>
+<ng-template #descriptionTemplate>
+  <nz-row class="description">
+    <label>Name of the user: {{ selectedItemDetails.display_name }}</label>
+  </nz-row>
+  <nz-row class="link">
+    <label>User ID: {{ selectedItemDetails.user_id }}</label>
+  </nz-row>
+  <nz-row class="link">
+    <label
+      >Link to the discussion:
+      <a href="{{ selectedItemDetails.link }}">Click here</a></label
+    >
+  </nz-row>
+  <nz-row class="link">
+    <label>License: {{ selectedItemDetails.content_license }}</label>
+  </nz-row>
+  <nz-row class="link">
+    <label>Number of viewers: {{ selectedItemDetails.view_count }}</label>
+  </nz-row>
+  <nz-row class="link">
+    <label>Number of answers: {{ selectedItemDetails.answer_count }}</label>
+  </nz-row>
+  <nz-row class="link">
+    <nz-col *ngFor="let tags of selectedItemDetails.tags; let i; as: index">
+      <nz-tag [nzColor]="'Green'">{{ tags }}</nz-tag>
+    </nz-col>
+  </nz-row>
+</ng-template>
