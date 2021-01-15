@@ -29,7 +29,7 @@ export class ListPageComponent implements OnInit {
     this.form = this.formBuilder.group({
       page: [''],
       order: [''],
-      sort: [''],
+      sort: ['activity'],
       q: [''],
       answers: [''],
       closed: [''],
@@ -75,7 +75,7 @@ export class ListPageComponent implements OnInit {
             content_license: data.content_license,
           };
         });
-        this.isLoading = !this.isLoading;
+        this.isLoading = false;
         return this.lists;
       });
   }
