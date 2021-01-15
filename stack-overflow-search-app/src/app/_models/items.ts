@@ -12,4 +12,8 @@ export interface ItemData {
     content_license:string;
   }
 
-  
+export interface Answers {
+  avatar: string;
+  display_name:string;
+  body: string;
+}
