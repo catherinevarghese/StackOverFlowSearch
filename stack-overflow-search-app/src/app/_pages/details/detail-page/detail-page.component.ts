@@ -11,10 +11,7 @@ export class DetailPageComponent implements OnInit {
   selectedItem: any;
   selectedItemDetails: ItemData;
   answerList: any;
-
-
   constructor(public activatedRoute: ActivatedRoute, public listPageService: ListPageServicesService) { }
-
   // tslint:disable-next-line:typedef
   ngOnInit() {
    this.selectedItem = localStorage.getItem('selectedItem');
@@ -24,10 +21,14 @@ export class DetailPageComponent implements OnInit {
       return {
        avatar: data.owner.profile_image,
        display_name: data.owner.display_name,
-       body: data.body
+       body:  this.htmlToPlaintext( data.body )
       };
     });
+    console.log('answer,',this.answerList);
     return this.answerList;
   });
+  }
+   htmlToPlaintext(text) {
+    return text ? String(text).replace(/<[^>]+>/gm, '') : '';
   }
 }
